@@ -1,19 +1,36 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  YellowBox,
+  StatusBar,
+} from 'react-native';
+import Svg, { Circle } from 'react-native-svg';
 
-export default function App() {
+import { getWidthFromMargin } from './util';
+import CustomRecord from './components/CustomRecord';
+
+YellowBox.ignoreWarnings(['.811']); // get rid of annoying ".811%" warning
+
+const App: React.FC<{}> = () => {
+  const margin = 48;
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <StatusBar barStyle="dark-content" />
+      <CustomRecord width={getWidthFromMargin(margin)} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#eee',
     alignItems: 'center',
     justifyContent: 'center',
   },
 });
+
+export default App;
